@@ -411,4 +411,9 @@ details + blockquote {
 table.fixed { table-layout:fixed; }
 table.fixed td { overflow: auto; }
 
+.card.whats-new {
+  max-height:20em;
+  overflow-y:auto;
+}
+
 @import "highlight.scss";
