@@ -5,7 +5,9 @@ weight: 5
 aliases: "/getting-started/migrating-from-networks/device-json"
 ---
 
-{{% tts %}} allows you to import devices from other networks using a JSON file describing those devices. Devices imported this way can be migrated without the need for a rejoin.
+{{% tts %}} allows you to import devices from other networks using a JSON file describing those devices.
+
+Devices imported this way can be migrated without the need for a rejoin, but if migrating a device with an existing session, be sure to configure `mac-state.current-parameters.rx1-delay` to match the existing session so that {{% tts %}} can communicate with the device. See the [Existing Session Example](#example-otaa-device-with-existing-session) for more information.
 
 Create a `devices.json` file containing a device object, like so:
 
@@ -134,6 +136,11 @@ The linked specification is quite extensive, and contains a lot of fields that a
       "key":"01020304050607080102030405060708"
     }
   },
+  "mac_state":{
+    "current-parameters":{
+      "rx1_delay": "RX_DELAY_2"
+    }
+  },
   "mac_settings":{
     "rx1_delay":{
       "value":"RX_DELAY_5"
@@ -155,6 +162,8 @@ The linked specification is quite extensive, and contains a lot of fields that a
   }
 }
 ```
+
+{{< note >}}`mac-state.current-parameters.rx1-delay` is set to `RX_DELAY_2` to match the existing session on the migrated device. {{% tts %}} will then update the `Rx1 Delay` on the device to the value in `mac-settings.rx1-delay`. See [MAC Settings and MAC State]({{< ref "/devices/mac-settings#mac-settings-and-mac-state" >}}) for more information about configuring MAC settings. {{</ note >}}
 
 </details></summary>
 
