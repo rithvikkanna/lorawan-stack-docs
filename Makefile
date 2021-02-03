@@ -43,15 +43,15 @@ clean.deps:
 	rm -rf $(YARN_DEPS)
 
 .PHONY: build.internal
-build.internal: deps
+build.internal:
 	$(HUGO) --source $(DOC_ROOT) --destination $(INTERNAL_DEST)
 
 .PHONY: build.public
-build.public: deps
+build.public:
 	$(HUGO) --source $(DOC_ROOT) --destination $(PUBLIC_DEST) --baseURL $(HUGO_BASE_URL) --environment $(ENVIRONMENT)
 
 .PHONY: server
-server: deps
+server:
 	$(HUGO) server -s $(DOC_ROOT) --environment $(ENVIRONMENT)
 
 .PHONY: new
