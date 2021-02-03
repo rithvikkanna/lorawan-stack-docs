@@ -74,10 +74,6 @@ go.deps:
 js.deps: $(YARN_DEPS)
 
 $(YARN_DEPS):
-	@if ! [ -x "$$(command -v yarn)" ]; then\
-		echo "Installing yarn";\
-			curl -o- -L https://yarnpkg.com/install.sh | bash;\
-	fi
 	yarn --cwd doc/themes/the-things-stack/
 
 hugo.exe: go.mod go.sum
