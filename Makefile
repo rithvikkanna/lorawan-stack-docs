@@ -71,9 +71,7 @@ go.deps:
 	go mod download
 
 .PHONY: js.deps
-js.deps: $(YARN_DEPS)
-
-$(YARN_DEPS):
+js.deps:
 	yarn --cwd doc/themes/the-things-stack/
 
 hugo.exe: go.mod go.sum
